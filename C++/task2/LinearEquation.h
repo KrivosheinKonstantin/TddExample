@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include <vector>
 #include <string>
@@ -11,30 +11,30 @@ private:
 	vector<double> coef;
 	vector<string> Resplit(const string&, string);
 public:
-	int Size();//кол-во элементов
-	LinearEquation(string);//строка с коэфф.
-	LinearEquation(list<double>);//список
-	LinearEquation(vector<double>);//массив
-	LinearEquation(int);//n перменных с 0коэфф.
+	int Size();//РєРѕР»-РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
+	LinearEquation(string);//СЃС‚СЂРѕРєР° СЃ РєРѕСЌС„С„.
+	LinearEquation(list<double>);//СЃРїРёСЃРѕРє
+	LinearEquation(vector<double>);//РјР°СЃСЃРёРІ
+	LinearEquation(int);//n РїРµСЂРјРµРЅРЅС‹С… СЃ 0РєРѕСЌС„С„.
 	~LinearEquation() {
 		vector<double>().swap(coef);
 	};
-	void RandomIn();//Инициализация случайными числами
-	void SameIn(double);//Одинаковыми значениями
-	bool IsNull();//проверка на пустоту
-	double& operator[] (int);//обращение к элементам по индексу
+	void RandomIn();//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
+	void SameIn(double);//РћРґРёРЅР°РєРѕРІС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё
+	bool IsNull();//РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ
+	double& operator[] (int);//РѕР±СЂР°С‰РµРЅРёРµ Рє СЌР»РµРјРµРЅС‚Р°Рј РїРѕ РёРЅРґРµРєСЃСѓ
 
-	LinearEquation operator+(LinearEquation&);//сложение двух уравнений
-	LinearEquation operator-(LinearEquation&);//вычитание двух уравнений
-	LinearEquation operator-();// умножение на -1
-	LinearEquation operator*(const double&);//умножение на вещ.число
+	LinearEquation operator+(LinearEquation&);//СЃР»РѕР¶РµРЅРёРµ РґРІСѓС… СѓСЂР°РІРЅРµРЅРёР№
+	LinearEquation operator-(LinearEquation&);//РІС‹С‡РёС‚Р°РЅРёРµ РґРІСѓС… СѓСЂР°РІРЅРµРЅРёР№
+	LinearEquation operator-();// СѓРјРЅРѕР¶РµРЅРёРµ РЅР° -1
+	LinearEquation operator*(const double&);//СѓРјРЅРѕР¶РµРЅРёРµ РЅР° РІРµС‰.С‡РёСЃР»Рѕ
 
-	operator string();//вывод
-	operator bool();//проверка на противоречивость
-	operator list<double>();//неявное преобразование к списку
-	friend LinearEquation operator*(double, LinearEquation&);//умножение на вещ.число
+	operator string();//РІС‹РІРѕРґ
+	operator bool();//РїСЂРѕРІРµСЂРєР° РЅР° РїСЂРѕС‚РёРІРѕСЂРµС‡РёРІРѕСЃС‚СЊ
+	operator list<double>();//РЅРµСЏРІРЅРѕРµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ Рє СЃРїРёСЃРєСѓ
+	friend LinearEquation operator*(double, LinearEquation&);//СѓРјРЅРѕР¶РµРЅРёРµ РЅР° РІРµС‰.С‡РёСЃР»Рѕ
 
 };
-// конструкторы для сравнения
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
 bool operator==(LinearEquation&, LinearEquation&);
 bool operator!=(LinearEquation&, LinearEquation&);

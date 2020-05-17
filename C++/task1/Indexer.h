@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 using namespace std;
 
@@ -6,15 +6,15 @@ class Indexer
 {
 private:
 	double* arr;
-	int start; // начальная позиция
-	int length;//размер
+	int start; // РЅР°С‡Р°Р»СЊРЅР°СЏ РїРѕР·РёС†РёСЏ
+	int length;//СЂР°Р·РјРµСЂ
 
-	bool Index(int);//корректный индекс
+	bool Index(int);//РєРѕСЂСЂРµРєС‚РЅС‹Р№ РёРЅРґРµРєСЃ
 
 public:
-	Indexer(double*, int, int, int);//конструктор
-	int Length();//размер массива
-	double& operator[] (int);//обращение к переменным
+	Indexer(double*, int, int, int);//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	int Length();//СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР°
+	double& operator[] (int);//РѕР±СЂР°С‰РµРЅРёРµ Рє РїРµСЂРµРјРµРЅРЅС‹Рј
 };
 
 Indexer::Indexer(double* _arr, int _start, int _length, int arrLength)

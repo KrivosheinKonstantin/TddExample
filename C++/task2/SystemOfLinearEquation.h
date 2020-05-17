@@ -1,19 +1,19 @@
-#pragma once
+п»ї#pragma once
 #include"LinearEquation.h"
 #include<string>
 class SystemOfLinearEquation
 {
 private:
 	vector<LinearEquation> SLE;
-	int n;//кол-во переменных
+	int n;//РєРѕР»-РІРѕ РїРµСЂРµРјРµРЅРЅС‹С…
 public:
-	SystemOfLinearEquation(int _n) :n(_n) {}//n переменных
+	SystemOfLinearEquation(int _n) :n(_n) {}//n РїРµСЂРµРјРµРЅРЅС‹С…
 	~SystemOfLinearEquation() { vector<LinearEquation>().swap(SLE); }
-	LinearEquation& operator[] (int);//обращение к элементам по индексу
-	int Size();//возращает кол-во уравнений
-	void Add(LinearEquation&); //добавить уравнение в СЛУ
-	void Delete();//удалить уравнение из СЛУ
-	void StepView();//приведение к ступенчатому виду
-	vector<double> Solve();//решение
-	operator string();//переопределение метода
+	LinearEquation& operator[] (int);//РѕР±СЂР°С‰РµРЅРёРµ Рє СЌР»РµРјРµРЅС‚Р°Рј РїРѕ РёРЅРґРµРєСЃСѓ
+	int Size();//РІРѕР·СЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ СѓСЂР°РІРЅРµРЅРёР№
+	void Add(LinearEquation&); //РґРѕР±Р°РІРёС‚СЊ СѓСЂР°РІРЅРµРЅРёРµ РІ РЎР›РЈ
+	void Delete();//СѓРґР°Р»РёС‚СЊ СѓСЂР°РІРЅРµРЅРёРµ РёР· РЎР›РЈ
+	void StepView();//РїСЂРёРІРµРґРµРЅРёРµ Рє СЃС‚СѓРїРµРЅС‡Р°С‚РѕРјСѓ РІРёРґСѓ
+	vector<double> Solve();//СЂРµС€РµРЅРёРµ
+	operator string();//РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ РјРµС‚РѕРґР°
 };
