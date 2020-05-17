@@ -1,4 +1,4 @@
-#include "LinearEquation.h"
+п»ї#include "LinearEquation.h"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -16,14 +16,14 @@ int LinearEquation::Size()
 
 LinearEquation::LinearEquation(string _s)
 {
-	vector<string> arr = Resplit(_s, "[^\\d-.]");//любой символ кроме цифр, - и .
-	for (int i = 0; i < arr.size(); i++)//преобразуем строку в число с плавающей точкой типа double
+	vector<string> arr = Resplit(_s, "[^\\d-.]");//Р»СЋР±РѕР№ СЃРёРјРІРѕР» РєСЂРѕРјРµ С†РёС„СЂ, - Рё .
+	for (int i = 0; i < arr.size(); i++)//РїСЂРµРѕР±СЂР°Р·СѓРµРј СЃС‚СЂРѕРєСѓ РІ С‡РёСЃР»Рѕ СЃ РїР»Р°РІР°СЋС‰РµР№ С‚РѕС‡РєРѕР№ С‚РёРїР° double
 		if (arr[i] != "") coef.push_back(stod(arr[i].c_str()));
 		
 }
 
 LinearEquation::LinearEquation(list<double>a)
-{ //коэф из списка добавляем в конец вектора
+{ //РєРѕСЌС„ РёР· СЃРїРёСЃРєР° РґРѕР±Р°РІР»СЏРµРј РІ РєРѕРЅРµС† РІРµРєС‚РѕСЂР°
 	copy(a.begin(), a.end(), back_inserter(coef));
 }
 LinearEquation::LinearEquation(vector<double>a)
@@ -39,14 +39,14 @@ LinearEquation::LinearEquation(int n)
 
 void LinearEquation::RandomIn()
 {
-	//каждый элемент становится равен рандомному значению
+	//РєР°Р¶РґС‹Р№ СЌР»РµРјРµРЅС‚ СЃС‚Р°РЅРѕРІРёС‚СЃСЏ СЂР°РІРµРЅ СЂР°РЅРґРѕРјРЅРѕРјСѓ Р·РЅР°С‡РµРЅРёСЋ
 	for_each(coef.begin(), coef.end(), [](double& i) {
 		i = (rand() % 5) / 10.0; });
 }
 
 void LinearEquation::SameIn(double item)
 {
-	//каждый элемент становится равен item
+	//РєР°Р¶РґС‹Р№ СЌР»РµРјРµРЅС‚ СЃС‚Р°РЅРѕРІРёС‚СЃСЏ СЂР°РІРµРЅ item
 	for_each(coef.begin(), coef.end(), [item](double& i) {i = item; });
 }
 double& LinearEquation::operator[](int index)
@@ -58,7 +58,7 @@ double& LinearEquation::operator[](int index)
 }
 
 LinearEquation LinearEquation::operator*(const double& r)
-{//уравнение * r
+{//СѓСЂР°РІРЅРµРЅРёРµ * r
 	vector<double> arr = coef;
 	for_each(arr.begin(), arr.end(), [r](double& i) { i *= r; });
 	return
@@ -66,7 +66,7 @@ LinearEquation LinearEquation::operator*(const double& r)
 }
 
 LinearEquation operator*(double r, LinearEquation& a)
-{//r * уравнение
+{//r * СѓСЂР°РІРЅРµРЅРёРµ
 	return a * r;
 }
 
@@ -113,13 +113,13 @@ LinearEquation::operator bool()
 	return (coef[Size() - 1] != 0) ? false : true;
 }
 
-LinearEquation::operator list<double>() //копируем элементы вектора в список
+LinearEquation::operator list<double>() //РєРѕРїРёСЂСѓРµРј СЌР»РµРјРµРЅС‚С‹ РІРµРєС‚РѕСЂР° РІ СЃРїРёСЃРѕРє
 {
 	list<double> coeff;
 	copy(coef.begin(), coef.end(), back_inserter(coeff));
 	return coeff;
 }
-bool LinearEquation::IsNull()//проверка эл. на равенство с 0
+bool LinearEquation::IsNull()//РїСЂРѕРІРµСЂРєР° СЌР». РЅР° СЂР°РІРµРЅСЃС‚РІРѕ СЃ 0
 {
 	for (int i = 0; i < Size(); i++)
 		if (coef[i] != 0) return false;
@@ -130,8 +130,8 @@ bool operator==(LinearEquation& a, LinearEquation& b)
 {
 	for (int i = 0; i < a.Size(); i++)
 		if (abs(a[i] - b[i]) > 1e-9) return false;
-		//из-за ошибок связанных с внутренним двоичным представлением чисел
-		//если разница меньше 1x10^(-9) то считаем что равны
+		//РёР·-Р·Р° РѕС€РёР±РѕРє СЃРІСЏР·Р°РЅРЅС‹С… СЃ РІРЅСѓС‚СЂРµРЅРЅРёРј РґРІРѕРёС‡РЅС‹Рј РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµРј С‡РёСЃРµР»
+		//РµСЃР»Рё СЂР°Р·РЅРёС†Р° РјРµРЅСЊС€Рµ 1x10^(-9) С‚Рѕ СЃС‡РёС‚Р°РµРј С‡С‚Рѕ СЂР°РІРЅС‹
 	return true;
 }
 bool operator!=(LinearEquation& a, LinearEquation& b)
@@ -141,17 +141,17 @@ bool operator!=(LinearEquation& a, LinearEquation& b)
 }
 
 vector<string> LinearEquation::Resplit(const string& s, string rgx_str)
-{ //разбиваем строку по регулярному выражению
-	vector<string> elems;//строки с коэф.
-	regex rgx(rgx_str);//регулярное выражение
+{ //СЂР°Р·Р±РёРІР°РµРј СЃС‚СЂРѕРєСѓ РїРѕ СЂРµРіСѓР»СЏСЂРЅРѕРјСѓ РІС‹СЂР°Р¶РµРЅРёСЋ
+	vector<string> elems;//СЃС‚СЂРѕРєРё СЃ РєРѕСЌС„.
+	regex rgx(rgx_str);//СЂРµРіСѓР»СЏСЂРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ
 	sregex_token_iterator iter(s.begin(), s.end(), rgx, -1);
-	//от начала до конца строки
-	//извлекаем элементы, используя начальную строку и регулярное выражение
-	//индекс -1 представляет части, которые не совпадают с рег. выражением
+	//РѕС‚ РЅР°С‡Р°Р»Р° РґРѕ РєРѕРЅС†Р° СЃС‚СЂРѕРєРё
+	//РёР·РІР»РµРєР°РµРј СЌР»РµРјРµРЅС‚С‹, РёСЃРїРѕР»СЊР·СѓСЏ РЅР°С‡Р°Р»СЊРЅСѓСЋ СЃС‚СЂРѕРєСѓ Рё СЂРµРіСѓР»СЏСЂРЅРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ
+	//РёРЅРґРµРєСЃ -1 РїСЂРµРґСЃС‚Р°РІР»СЏРµС‚ С‡Р°СЃС‚Рё, РєРѕС‚РѕСЂС‹Рµ РЅРµ СЃРѕРІРїР°РґР°СЋС‚ СЃ СЂРµРі. РІС‹СЂР°Р¶РµРЅРёРµРј
 	sregex_token_iterator end;
 	
 	for (sregex_token_iterator i = iter; i != end; ++i)
-		elems.push_back(*i); //добавляем найденные элементы
+		elems.push_back(*i); //РґРѕР±Р°РІР»СЏРµРј РЅР°Р№РґРµРЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹
 	
 	return elems;
 }
